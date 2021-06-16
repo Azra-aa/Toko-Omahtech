@@ -5,12 +5,12 @@ include "../connect.php"
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- BOOTSTRAP STYLES-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
@@ -24,14 +24,12 @@ include "../connect.php"
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- font awesome js -->
     <script src="https://use.fontawesome.com/c579182323.js"></script>
+    <title>Table Barang</title>
 
-  <title>Table Barang</title>
 </head>
 <body>
 
-     
 <!-- binarry admin -->
-
 <div id="wrapper">
     <!-- NAV -->
         <nav class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom: 0">
@@ -85,11 +83,11 @@ include "../connect.php"
         <!-- End Of Section 1 -->
 <!-- end of binnary admin -->
 
-        <div class="col-md-12 col-sm-12 col-xs-12">
+<div class="col-md-12 col-sm-12 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
         Table barang
-        </div>
+    </div>
     <div class="panel-body">
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover">

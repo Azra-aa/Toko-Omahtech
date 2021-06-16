@@ -50,15 +50,27 @@
     </header>
 <br>
     <!-- Jumbotron -->
-<div class="container mt-5">
-    <div class="jumbotron">
+<div class="container mt-3" id="login">
+    <div class="jumbotron">    
+        <?php if (isset($_SESSION["gagal"])) { ?>
+              <div class="alert alert-danger" role="alert">
+              Username/Password salah!!
+              </div>
+        <?php } ?>
+        <?php if (isset($_GET['pesan'])){ ?>
+              <div class="alert alert-danger" role="alert">
+              Logout Berhasil!!
+              </div>
+        <?php } ?>
+        <?php session_unset(); ?>
         <div class="row justify-content-md-center">
             <div class="col-sm-4 p-4 bg-light">
               <h1 class="mb-4">Login page</h1>
+            <!-- Form -->
             <form method="POST" action="cek_login.php">
               <div class="form-group">
-                  <label for="username">username</label>
-                  <input type="username" class="form-control" id="username" name="username">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" name="username">
               </div>
               <div class="form-group">
                   <label for="password">Password</label>
@@ -66,16 +78,15 @@
               </div>
               <button type="submit" class="btn btn-primary" name="login">Submit</button>
             </form>
+            <!-- Form Start -->
             </div>
         </div>
     </div>    
 </div>
 
-
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 
     <!-- Additional Scripts -->
     <script src="assets/js/custom.js"></script>
@@ -84,11 +95,10 @@
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/accordions.js"></script>
 
-
     <script language = "text/Javascript"> 
       cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
+      function clearField(t)  //declaring the array outside of the
+      if(! cleared[t.id]){    // function makes it static and global
           cleared[t.id] = 1;  // you could use true and false, but that's more typing
           t.value='';         // with more chance of typos
           t.style.color='#fff';

@@ -5,14 +5,15 @@ include 'connect.php';
 if (isset($_POST['login'])) {
 
     $username = $_POST['username'];
-    $pasword = $_POST['password'];
+    $password = $_POST['password'];
 
     if ($username == "admin") {
-        $result = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username' AND PASSWORD='$password' ");
+        $result = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username' AND password='$password' ");
 
         $data = mysqli_fetch_assoc($result);
 
         if (mysqli_num_rows($result) === 1) {
+
             $_SESSION['admin'] = true;
             $_SESSION['pengunjung'] = "admin";
             $_SESSION['login'] = true;
@@ -24,17 +25,16 @@ if (isset($_POST['login'])) {
             header("Location: login.php");
         }
     } else {
-        $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND PASSWORD='$password' ");
+        $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password' ");
 
         $data = mysqli_fetch_assoc($result);
 
         if (mysqli_num_rows($result) === 1) {
-            header("Location: pengunjung/index.php");
+            
             $_SESSION['user'] = true;
-            $_SESSION['admin'] = true;
             $_SESSION['pengunjung'] = $username;
             $_SESSION['login'] = true;
-            header("Location: login.php");
+            header("Location: pengunjung/index.php");
             exit;
         } else {
             $_SESSION['gagal'] = true;
