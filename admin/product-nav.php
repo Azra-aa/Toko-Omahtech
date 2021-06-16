@@ -130,6 +130,11 @@ include "../connect.php"
                 <!-- End of fetch -->
                 </tbody>
             </table>
+            <?php if(!isset($_GET['halaman'])){ ?> 
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <a href="index.php?halaman=tambahproduk" class="btn btn-primary">Tambah Data</a>
+        </div>
+    <?php } ?>
         </div>
     </div>
 </div>       

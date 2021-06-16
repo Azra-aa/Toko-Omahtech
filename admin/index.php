@@ -66,8 +66,8 @@ include "../connect.php"
                     <a href="../login.php"><i class="fa fa-bolt fa-3x"></i> Logout</a>
                 </li>	
                 <li>
-                    <a   href="../registeration.html"><i class="fa fa-laptop fa-3x"></i> Registeration</a>
-                </li>	
+                    <a href="../registeration.html"><i class="fa fa-laptop fa-3x"></i> Registeration</a>
+                </li>
             </ul>
     </div>
     </nav>  
@@ -153,7 +153,7 @@ include "../connect.php"
     </div>
     <?php if(!isset($_GET['halaman'])){ ?> 
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="index.php?halaman=tambahproduk" class="btn btn-primary">Tambah Data</a>
+            <a href="index.php?halaman=tambahproduk" class="btn btn-success">Tambah Data</a>
         </div>
     <?php } ?>
     <!-- End of ROW  -->          

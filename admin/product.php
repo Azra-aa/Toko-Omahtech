@@ -50,8 +50,8 @@ include "../connect.php"
                         <td><?= $data['stok']; ?></td>
                         <td><?= $data['jenis']; ?></td>
                         <td>
-                            <a href="index.php?halaman=ubahproduk&id=<?= $data['id']?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="index.php?halaman=hapusproduk&id=<?= $data['id']?>" class="btn btn-warning btn-sm" onclick="return confirm('yakin dihapus')">Hapus</a>
+                            <a href="index.php?halaman=ubahproduk&id=<?= $data['id']?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="index.php?halaman=hapusproduk&id=<?= $data['id']?>" class="btn btn-danger btn-sm" onclick="return confirm('yakin dihapus?')">Hapus</a>
                         </td>
                     </tr>
                     <?php $i++; } ?>
