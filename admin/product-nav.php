@@ -2,7 +2,6 @@
 include "../connect.php"
 ?>
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +118,7 @@ include "../connect.php"
                     <tr>
                         <td><?= $i ?></td>
                         <td><?= $data['nama']; ?></td>
-                        <td><img src="../assets/images/<?= $data['gambar']; ?>" alt=""></td>
+                        <td><img src="../assets/images/<?= $data['Gambar']; ?>" width="90" alt=""></td>
                         <td><?= $data['harga']; ?></td>
                         <td><?= $data['deskripsi']; ?></td>
                         <td><?= $data['stok']; ?></td>
