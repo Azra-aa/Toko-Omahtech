@@ -1,10 +1,10 @@
 <?php 
 session_start();
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['admin'])){
     header("Location: ../login.php");
 }
+include "../connect.php"
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

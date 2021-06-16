@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-if (!isset($_SESSION['user'])){
-    header("Location: ../login.php");
+if (!isset($_SESSION['user']) || !isset($_SESSION['admin'])){
+    header("Location: ../login.php");   
 }
 
 // echo "connection succes";
@@ -39,7 +39,6 @@ if (!isset($_SESSION['user'])){
         <!-- Header -->
         <header class="">
       <nav class="navbar navbar-expand-lg">
-        <div class="shadow-sm p-3 mb-5 bg-white rounded"></div> #small shadow
         <div class="container">
           <a class="navbar-brand" href="index.html"><h2>Sixteen <em>Clothing</em></h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

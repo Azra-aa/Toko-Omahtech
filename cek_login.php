@@ -8,7 +8,7 @@ if (isset($_POST['login'])) {
     $pasword = $_POST['password'];
 
     if ($username == "admin") {
-        $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND PASSWORD='$pasword' ");
+        $result = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username' AND PASSWORD='$password' ");
 
         $data = mysqli_fetch_assoc($result);
 
@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
             header("Location: login.php");
         }
     } else {
-        $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND PASSWORD='$pasword' ");
+        $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND PASSWORD='$password' ");
 
         $data = mysqli_fetch_assoc($result);
 

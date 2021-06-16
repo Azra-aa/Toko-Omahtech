@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/owl.css">
     <!-- Style.css -->
     <link rel="stylesheet" href="style.css">
-    <title>Admin</title>
+    <title>Login Page</title>
 </head>
 <body>
 
