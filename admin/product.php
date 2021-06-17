@@ -38,8 +38,8 @@ include "../connect.php"
 
                 <!-- fetch -->
                 <?php 
-                $i = 1;
-                while ($data = mysqli_fetch_assoc($result)) {
+                    $i = 1;
+                    while ($data = mysqli_fetch_assoc($result)) {
                 ?>
                     <tr>
                         <td><?= $i ?></td>
@@ -54,7 +54,7 @@ include "../connect.php"
                             <a href="index.php?halaman=hapusproduk&id=<?= $data['id']?>" class="btn btn-danger btn-sm" onclick="return confirm('yakin dihapus?')">Hapus</a>
                         </td>
                     </tr>
-                    <?php $i++; } ?>
+                <?php $i++; } ?>
                 <!-- End of fetch -->
                 </tbody>
             </table>

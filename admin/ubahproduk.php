@@ -1,28 +1,38 @@
 <?php 
 
-if (isset($_POST['save'])) {
+$result = mysqli_query($conn,"SELECT * FROM barang WHERE id='$_GET[id]'");
+
+$data = mysqli_fetch_assoc($result);
+
+if (isset($_POST['edit'])) {
     $nama = $_POST['nama'];
-    $foto = uploadImage();
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
     $deskripsi = $_POST['deskripsi'];
     $jenis = $_POST['jenis'];
+    $id = $_POST['id'];
 
-    if (!$foto) {
-        return false;
+    $gambarLama = htmlspecialchars($_POST['gambarLama']);
+
+    if ($_FILES['foto']['error'] === 4) {
+        $foto = $gambarLama;
+    }else {
+        $foto = uploadImage();
     }
 
     $result = mysqli_query($conn,
-    "INSERT INTO barang (nama,Gambar,jenis,deskripsi,harga,stok) VALUES 
-    ('$nama','$foto','$jenis','$deskripsi','$harga','$stok')");
+    "UPDATE barang SET nama='$nama',gambar='$foto',jenis='$jenis',deskripsi='$deskripsi',harga='$harga',stok='$stok' WHERE id='$id' ");
 
-    echo  "<div class='alert alert-info'>Data Tersimpan</div>";
-    echo  "<meta http-equiv='refresh' content='1;url=index.php'>";
+if (mysqli_affected_rows($conn) > 0) {
+    echo "<script> alert('data produk telah diubah'); </script>";
+    echo "<script> location='index.php'; </script>";
+}else {
+    echo "<script>alert('data produk gagal diubah');</script>";
+    echo "<script>location='index.php';</script>";
 }
-
+}
 ?>
 
-<!-- HTML FORM -->
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -33,33 +43,37 @@ if (isset($_POST['save'])) {
                 <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Nama</label>
-                        <input type="text" class="form-control" name="nama">
+                        <input type="text" class="form-control" name="nama" value="<?= $data['nama'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Harga (Rp)</label>
-                        <input type="number" class="form-control" name="harga">
+                        <input type="number" class="form-control" name="harga" value="<?= $data['harga'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Stok</label>
-                        <input type="text" class="form-control" name="stok">
+                        <input type="text" class="form-control" name="stok" value="<?= $data['stok'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Jenis</label>
-                        <input type="text" class="form-control" name="jenis">
+                        <input type="text" class="form-control" name="jenis" value="<?= $data['jenis'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Deskripsi</label>
-                        <textarea name="deskripsi" class="form-control" rows="10"></textarea>
+                        <textarea name="deskripsi" class="form-control" rows="10"><?= $data['deskripsi'] ?></textarea>
                     </div>
+                    <input type="hidden" name="gambarLama" value="<?= $data['Gambar'] ?>">
                     <div class="form-group">
                         <label>Foto</label>
+                        <img src="../assets/images/<?php echo $data['Gambar']; ?>" class="img-thumbnail" width="100">
                         <input type="file" class="form-control" name="foto">
                     </div>
-                    <button class="btn btn-success" name="save">Save</button>
+                    <input type="hidden" name="id" value="<?= $data['id'] ?>">
+                    <button class="btn btn-primary" name="edit">Simpan</button>
                 </form>
         </div>
     </div>
 </div>
+
 <?php 
 
 function uploadImage(){
@@ -70,7 +84,7 @@ function uploadImage(){
 
     //mengecek apakah ada file yang di upload
     if ($error === 4) {
-        echo "<script>alert(\"Silahkan Upload Gambar\");</script>";
+        echo "<script>alert(\"Silahkan Upload gambar\");</script>";
         return false;
     }
     
@@ -86,6 +100,7 @@ function uploadImage(){
     }
 
     //mengecek ukuran file
+
     if ($sizeFile > 1000000) {
         echo "<script>alert('ukuran file terlalu besar')</script>";
         return false;

@@ -144,7 +144,7 @@ include "../connect.php"
             } elseif ($_GET['halaman'] == 'hapusproduk') {
                 include 'hapusproduk.php';
             } elseif ($_GET['halaman'] == 'ubahproduk') {
-                include 'ubahproduk';
+                include 'ubahproduk.php';
             }
         } else {
             include 'product.php';
