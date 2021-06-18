@@ -115,7 +115,7 @@ include "../connect.php";
           ?>
           <div class="col-md-4">
             <div class="product-item">
-              <a href="#"><img src="../assets/images/<?= $data['Gambar'];?>" alt=""></a>
+              <a href="#"><img src="../assets/images/<?= $data['Gambar'];?>" alt="" width="250" height="200"></a>
               <div class="down-content">
                 <a href="#"><h4><?= $data['nama']; ?></h4></a>
                 <h6>IDR <?= $data['harga']; ?></h6>
