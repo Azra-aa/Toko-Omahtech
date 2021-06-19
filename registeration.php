@@ -1,3 +1,18 @@
+<?php 
+require 'connect.php';
+if (isset($_POST['register'])) {
+    
+    if (registerasi($_POST) > 0) {
+        echo "<script>
+                alert('Kamu telah terdaftar!');
+            </script>";
+        exit;
+    } else {
+        echo mysqli_error($conn);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +30,7 @@
     <link rel="stylesheet" href="assets/css/owl.css">
     <!-- Style.css -->
     <link rel="stylesheet" href="style.css">
-    <title>Login Page</title>
+    <title>Registerasi</title>
 </head>
 <body>
 
@@ -57,22 +72,22 @@
     <div class="jumbotron">    
         <div class="row justify-content-md-center">
             <div class="col-sm-4 p-4 bg-light">
-                <h1 class="mb-4">Regis Page</h1>
+                <h1 class="mb-4">Registerasi</h1>
             <!-- Form -->
-            <form>
+            <form action="" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" placeholder="Buat Username!" />
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Buat Username!" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label> 
-                    <input type="password" class="form-control" placeholder="Masukkan Password!" />
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password!" />
                 </div>
                 <div class="form-group">
-                    <label for="repassword">Password</label>
-                    <input type="password" class="form-control" placeholder="Masukkan ulang Password!" />
+                    <label for="password2">Konfirmasi Password</label>
+                    <input type="password" class="form-control" name="password2" id="password2" placeholder="Masukkan ulang Password!" />
                 </div>
-                <a href="index.html" class="btn btn-primary">Register</a>
+                <button type="submit" class="btn btn-primary" name="register" >Register!</button>
                 <hr />
                 Sudah punya akun? <a href="login.php">Login di sini!</a>
             </form>
@@ -103,5 +118,41 @@
         }
     }
     </script>
+
+<?php 
+function registerasi($data) {
+    global $conn;
+
+    $username = strtolower(stripslashes($data['username']));
+    $password = mysqli_real_escape_string($conn, $data['password']);
+    $password2 = mysqli_real_escape_string($conn, $data['password2']);
+
+    // Mengecek apakah ada username yg sudah tersedia di database
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE username='$username'");
+    if (mysqli_fetch_assoc($result)) {
+        echo "<script>
+                alert('Username sudah tersedia, buat username lain!');
+            </script>";
+        return false;
+    } 
+
+    // Memastikan user tidak typo dalam membuat password
+    if ($password !== $password2) {
+        echo "<script>
+                alert('pasword tidak sesuai');
+            </script>";
+        return false;
+    }
+
+    // Enkripsi Password
+    $password = password_hash($password, PASSWORD_DEFAULT); 
+    // End of Enkripsi Password
+
+    //  Memasukkan user ke database
+    mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
+
+    return mysqli_affected_rows($conn);
+}
+?>
 </body>
 </html>
