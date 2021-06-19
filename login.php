@@ -37,8 +37,11 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
+          <div>
             <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="registeration.php">Registrasi
+                </a>
               <li class="nav-item active">
                 <a class="nav-link" href="login.php">Login
                   <span class="sr-only">(current)</span>
@@ -65,20 +68,22 @@
         <?php session_unset(); ?>
         <div class="row justify-content-md-center">
             <div class="col-sm-4 p-4 bg-light">
-              <h1 class="mb-4">Login page</h1>
+              <h1 class="mb-4">Login Page</h1>
             <!-- Form -->
             <form method="POST" action="cek_login.php">
               <div class="form-group">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" id="username" name="username">
+                  <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username!">
               </div>
               <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" name="password">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password!">
               </div>
               <button type="submit" class="btn btn-primary" name="login">Submit</button>
+              <hr />
+                Belum punya akun? <a href="registeration.php">Regis Sekarang!</a>
             </form>
-            <!-- Form Start -->
+            <!-- Form End -->
             </div>
         </div>
     </div>    

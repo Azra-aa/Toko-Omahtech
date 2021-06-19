@@ -66,7 +66,7 @@ include "../connect.php"
                     <a href="../login.php"><i class="fa fa-bolt fa-3x"></i> Logout</a>
                 </li>	
                 <li>
-                    <a href="../registeration.html"><i class="fa fa-laptop fa-3x"></i> Registeration</a>
+                    <a href="../registeration.php"><i class="fa fa-laptop fa-3x"></i> Registeration</a>
                 </li>
             </ul>
     </div>
