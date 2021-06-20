@@ -6,10 +6,13 @@ if (isset($_POST['register'])) {
         echo "<script>
                 alert('Kamu telah terdaftar!');
             </script>";
-        exit;
     } else {
         echo mysqli_error($conn);
+        exit;
     }
+
+    
+
 }
 ?>
 

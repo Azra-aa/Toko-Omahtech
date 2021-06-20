@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if (!isset($_SESSION['user']) || !isset($_SESSION['admin'])){
+if (!isset($_SESSION['user'])){
   header("Location: ../login.php");   
 }
 
@@ -26,7 +26,7 @@ include "../connect.php";
     <link rel="stylesheet" href="../assets/css/owl.css">
     <title>Home</title>
 </head>
-<body>
+<body id="home">
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -49,15 +49,14 @@ include "../connect.php";
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home
-                  <span class="sr-only">(current)</span>
+                <a class="nav-link" href="#home">Home
                 </a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link" href="products.html">Our Products</a>
+                <a class="nav-link" href="#">Our Products</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
+                <a class="nav-link" href="#">About Us</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="../logout.php">Logout</a>
@@ -94,8 +93,8 @@ include "../connect.php";
     <!-- Banner Ends Here -->
 
     <!-- Product -->
-    <div class="latest-products">
-      <div class="container">
+    <section class="latest-products" id="products">
+      <section class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
@@ -134,7 +133,7 @@ include "../connect.php";
           <?php $i++; } ?>
           <!-- End Of Card -->
       </div>
-    </div>
+    </section>
 
 
 

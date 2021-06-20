@@ -25,25 +25,21 @@ if (isset($_POST['login'])) {
             header("Location: login.php");
         }
     } else {
-        $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password' ");
-
-        $data = mysqli_fetch_assoc($result);
+        $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' ");
 
         if (mysqli_num_rows($result) === 1) {
-            
-            $_SESSION['user'] = true;
-            $_SESSION['pengunjung'] = $username;
-            $_SESSION['login'] = true;
-            header("Location: pengunjung/index.php");
+            $data = mysqli_fetch_assoc($result);
+            if (password_verify($password, $data["password"])) {
+                $_SESSION['user'] = true;
+                $_SESSION['pengunjung'] = "$username";
+                $_SESSION['login'] = true;
+                header("Location: pengunjung/index.php");
             exit;
+            }    
         } else {
             $_SESSION['gagal'] = true;
             header("Location: login.php");
         }
     }
-
-}
-
-
-
+} 
 ?>
